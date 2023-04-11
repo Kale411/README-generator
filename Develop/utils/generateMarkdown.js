@@ -6,7 +6,7 @@ static renderLicenseBadge(license) {
   var badges = {
     mit: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
     gnuplv3: '[![License: LPGL v3](https://img.shields.io/badge/License-LGPL_v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)',
-    isc: '[![License: ISC v3](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)',
+    isc: '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)',
     none: ''
   }
   return badges[license];
@@ -31,6 +31,14 @@ static renderLicenseSection(license) {
   return '';}
   else if (license){
     return `Licensed under the ${this.renderLicenseLink(license)} license`
+  }
+}
+
+static renderGithub(user){
+  if (user){
+    return `https://github.com/` + user;
+  } else {
+    return '';
   }
 }
 
@@ -63,7 +71,7 @@ ${data.contribution}
 
 ## Questions
 ${data.email}
-${data.github}
+${this.renderGithub(data.github)}
 
 ## License
 ${this.renderLicenseSection(data.license)}
